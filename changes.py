@@ -2,23 +2,27 @@ import re
 import subprocess
 import os
 
+import sys
+
 
 def verbose():
-    return True
+    if '-v' in sys.argv:
+        return True
+    return False
 
 
 def fetch_reflog(cmd):
     if verbose():
-        print('Reflog in {}'.format(cmd))
+        print('Reflog in %s' % cmd)
     output = subprocess.check_output('git -C {}/ reflog | cat'.format(cmd), shell=True)
     if verbose():
-        print(output)
+        print('Received reflog %s' % output)
     return output.decode('utf-8')
 
 
 def parse_reflog(reflog):
     if verbose():
-        print(reflog)
+        print('Parsing %s' % reflog)
     groups = re.compile('\s*(.*)\sHEAD@{(\d)}:\s(.*):\s.*').findall(reflog)
     if groups:
         return groups
@@ -35,6 +39,7 @@ def call_diff(hash_range):
 
 
 if __name__ == '__main__':
+    print 'Looking for changes between the last two commits.'
     cmd = os.getcwd()
     reflog = fetch_reflog(cmd)
     hashes = parse_reflog(reflog)
