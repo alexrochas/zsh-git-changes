@@ -1,6 +1,6 @@
-function git_changes() {
+function git-changes() {
     python changes.py;
 }
 
-git_changes
+git-changes
 
