@@ -1,6 +1,9 @@
 # ZSH-Git-Changes
 > ZShell plugin for invoke difftool on lastchanges
 
+[![Build Status](https://travis-ci.org/alexrochas/zsh-git-changes.svg?branch=master)](https://travis-ci.org/alexrochas/zsh-git-changes)
+[![codecov](https://codecov.io/gh/alexrochas/zsh-git-changes/branch/master/graph/badge.svg)](https://codecov.io/gh/alexrochas/zsh-git-changes)
+
 The main purpose of this plugin is to show based on git reflog the differences between commits after you call a **git pull**.
 This way you will be able to see diferences from your repo and the pulled origin code.
 
